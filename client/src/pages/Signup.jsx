@@ -80,7 +80,7 @@ const Signup = () => {
 							<TextInput
 								type="password"
 								id="password"
-								placeholder="password"
+								placeholder="*********"
 								onChange={handleChanges}
 							/>
 						</div>
