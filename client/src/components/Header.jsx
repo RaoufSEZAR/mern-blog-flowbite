@@ -3,15 +3,16 @@ import { Avatar, Button, Dropdown, Navbar, TextInput } from "flowbite-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaMoon, FaSun } from "react-icons/fa";
 import { AiOutlineSearch } from "react-icons/ai";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleTheme } from "../redux/theme/themeSlice";
 
 const Header = () => {
 	const path = useLocation().pathname;
 	const location = useLocation();
 	const navigate = useNavigate();
-	// const dispatch = useDispatch();
+	const dispatch = useDispatch();
 	const { currentUser } = useSelector((state) => state.user);
-	// const { theme } = useSelector((state) => state.theme);
+	const { theme } = useSelector((state) => state.theme);
 	const [searchTerm, setSearchTerm] = useState("");
 
 	const handleSubmit = (e) => {
@@ -49,8 +50,13 @@ const Header = () => {
 				<AiOutlineSearch />
 			</Button>
 			<div className="flex gap-2 md:order-2">
-				<Button className="w-12 h-10 sm:inline hidden" color="gray" pill>
-					<FaMoon />
+				<Button
+					className="w-12 h-10 sm:inline hidden"
+					color="gray"
+					pill
+					onClick={() => dispatch(toggleTheme())}
+				>
+					{theme === "light" ? <FaSun /> : <FaMoon />}
 				</Button>
 				{currentUser ? (
 					<Dropdown
