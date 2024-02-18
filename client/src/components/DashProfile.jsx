@@ -1,6 +1,6 @@
 import { Alert, Button, TextInput } from "flowbite-react";
 import { useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
 	getDownloadURL,
 	getStorage,
@@ -10,16 +10,29 @@ import {
 import { app } from "./../firebase";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+import {
+	updateUserFailure,
+	updateUserStart,
+	updateUserSuccess,
+} from "../redux/user/userSlice";
 
 const DashProfile = () => {
 	const { currentUser } = useSelector((state) => state.user);
+	const dispatch = useDispatch();
 	const [imageFile, setImageFile] = useState(null);
+	const [formData, setFormData] = useState({});
 	const [imageFileUrl, setImageFileUrl] = useState(null);
+	const [updateUserErrorHook, setUpdateUserErrorHook] = useState(null);
 	const [imageFileUploadingProgress, setImageFileUploadingProgress] =
 		useState(null);
 	const [imageFileUploadingError, setImageFileUploadingError] = useState(null);
+	const [imageFileUploading, setImageFileUploading] = useState(false);
+	const [updateUserSuccessHook, setUpdateUserSuccessHook] = useState(null);
 	const filePickerRef = useRef();
-	const handleUserInfo = () => {};
+	const handleUserInfo = async (e) => {
+		setFormData({ ...formData, [e.target.id]: e.target.value });
+	};
+
 	const handleImageChange = (e) => {
 		const file = e.target.files[0];
 		if (file) {
@@ -27,6 +40,7 @@ const DashProfile = () => {
 			setImageFileUrl(URL.createObjectURL(file));
 		}
 	};
+
 	useEffect(() => {
 		if (imageFile) {
 			uploadImage();
@@ -46,6 +60,7 @@ const DashProfile = () => {
 		// 	}
 		//   }
 		if (imageFile) {
+			setImageFileUploading(true);
 			setImageFileUploadingError(null);
 			const storage = getStorage(app);
 			const fileName = new Date().getTime() + imageFile.name;
@@ -66,22 +81,60 @@ const DashProfile = () => {
 					setImageFileUploadingProgress(null);
 					setImageFile(null);
 					setImageFileUrl(null);
+					setImageFileUploading(false);
 				},
 				() => {
 					getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl) => {
 						setImageFileUrl(downloadUrl);
+						setFormData({ ...formData, profilePicture: downloadUrl });
 						// remove the progressbar after completing
 						setImageFileUploadingProgress(100);
+						setImageFileUploading(false);
 					});
 				}
 			);
 		}
 	};
 
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		setUpdateUserErrorHook(null);
+		setUpdateUserSuccessHook(null);
+		if (Object.keys(formData).length === 0) {
+			setUpdateUserErrorHook("No changes made");
+			return;
+		}
+		if (imageFileUploading) {
+			setUpdateUserErrorHook("Please wait for image to upload");
+			return;
+		}
+		try {
+			dispatch(updateUserStart());
+			const res = await fetch(`/api/user/update/${currentUser._id}`, {
+				method: "PUT",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(formData),
+			});
+			const data = await res.json();
+			if (!res.ok) {
+				dispatch(updateUserFailure(data.message));
+				setUpdateUserErrorHook(data.message);
+			} else {
+				dispatch(updateUserSuccess(data));
+				setUpdateUserSuccessHook("User's profile updated successfully.");
+			}
+		} catch (error) {
+			dispatch(updateUserFailure(error.message));
+			setUpdateUserErrorHook(error.message);
+		}
+	};
+
 	return (
 		<div className="max-w-lg mx-auto p-3 w-full">
 			<h1 className="my-7 font-semibold text-3xl text-center">Profile</h1>
-			<form className="flex flex-col gap-3">
+			<form onSubmit={handleSubmit} className="flex flex-col gap-3">
 				<input
 					type="file"
 					accept="image/*"
@@ -156,6 +209,17 @@ const DashProfile = () => {
 				<span className="cursor-pointer">Delete Account</span>
 				<span className="cursor-pointer">Sign Out</span>
 			</div>
+
+			{updateUserSuccessHook && (
+				<Alert color={"success"} className="mt-5">
+					{updateUserSuccessHook}
+				</Alert>
+			)}
+			{updateUserErrorHook && (
+				<Alert color={"failure"} className="mt-5">
+					{updateUserErrorHook}
+				</Alert>
+			)}
 		</div>
 	);
 };
