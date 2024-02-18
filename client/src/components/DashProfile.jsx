@@ -70,6 +70,8 @@ const DashProfile = () => {
 				() => {
 					getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl) => {
 						setImageFileUrl(downloadUrl);
+						// remove the progressbar after completing
+						setImageFileUploadingProgress(100);
 					});
 				}
 			);
@@ -91,7 +93,7 @@ const DashProfile = () => {
 					className="relative w-32 h-32 cursor-pointer shadow-md rounded-full overflow-hidden self-center"
 					onClick={() => filePickerRef.current.click()}
 				>
-					{imageFileUploadingProgress && (
+					{imageFileUploadingProgress && imageFileUploadingProgress !== 100 && (
 						<CircularProgressbar
 							value={imageFileUploadingProgress || 0}
 							text={`${imageFileUploadingProgress}%`}
