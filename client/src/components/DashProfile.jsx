@@ -11,6 +11,7 @@ import {
 import { app } from "./../firebase";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+import { Link } from "react-router-dom";
 import {
 	deleteUserFailure,
 	deleteUserStart,
@@ -22,7 +23,7 @@ import {
 } from "../redux/user/userSlice";
 
 const DashProfile = () => {
-	const { currentUser, error } = useSelector((state) => state.user);
+	const { currentUser, error, loading } = useSelector((state) => state.user);
 	const dispatch = useDispatch();
 	const [imageFile, setImageFile] = useState(null);
 	const [formData, setFormData] = useState({});
@@ -239,11 +240,27 @@ const DashProfile = () => {
 					onChange={handleUserInfo}
 					type="password"
 					id="password"
-					placeholder="pasword"
+					placeholder="password"
 				/>
-				<Button type="submit" gradientDuoTone="purpleToBlue" outline>
-					Update
+				<Button
+					type="submit"
+					gradientDuoTone="purpleToBlue"
+					outline
+					disabled={loading || imageFileUploading}
+				>
+					{loading ? "Loading..." : "Update" }
 				</Button>
+				{currentUser.isAdmin && (
+					<Link to="/create-post">
+						<Button
+							type="button"
+							gradientDuoTone={"purpleToPink"}
+							className="w-full"
+						>
+							Create a post
+						</Button>
+					</Link>
+				)}
 			</form>
 			<div className="flex justify-between mt-4 text-red-500">
 				<span className="cursor-pointer" onClick={() => setShowModal(true)}>
