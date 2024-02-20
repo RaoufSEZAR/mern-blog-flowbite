@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 import {
 	getDownloadURL,
 	getStorage,
@@ -10,15 +11,17 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { app } from "../firebase";
 import { CircularProgressbar } from "react-circular-progressbar";
+import { useNavigate } from "react-router-dom";
 
 const CreatePost = () => {
 	const categories = ["Nextjs", "Angular", "React", "Nodejs", "Javascript"];
+	const navigate = useNavigate();
 	const [file, setFile] = useState(null);
 	const [imageFileUploadingProgress, setImageFileUploadingProgress] =
 		useState(null);
 	const [imageFileUploadingError, setImageFileUploadingError] = useState(null);
 	const [formData, setFormData] = useState({});
-	const [value, setValue] = useState("");
+	const [publishError, setPublishError] = useState(null);
 
 	const handleUploadImage = async () => {
 		try {
@@ -65,10 +68,33 @@ const CreatePost = () => {
 			console.log(error);
 		}
 	};
+
+	const submitPost = async (e) => {
+		e.preventDefault();
+
+		try {
+			const res = await fetch("/api/post/create", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(formData),
+			});
+			const data = await res.json();
+			if (!res.ok) {
+				setPublishError(data.message);
+				return;
+			}
+			setPublishError(null);
+			navigate(`/post/${data.slug}`);
+		} catch (error) {
+			setPublishError(error);
+		}
+	};
 	return (
 		<div className="p-3 max-w-3xl mx-auto min-h-screen">
 			<h1 className="text-center text-3xl my-7 font-semibold">Create Post</h1>
-			<form action="" className="flex flex-col gap-4">
+			<form action="" className="flex flex-col gap-4" onSubmit={submitPost}>
 				<div className="flex flex-col gap-4 sm:flex-row justify-between">
 					<TextInput
 						required
@@ -76,9 +102,16 @@ const CreatePost = () => {
 						id="title"
 						placeholder="title"
 						className="flex-1"
+						onChange={(e) =>
+							setFormData({ ...formData, title: e.target.value })
+						}
 					/>
-					<Select>
-						<option disabled>Select a category</option>
+					<Select
+						onChange={(e) =>
+							setFormData({ ...formData, category: e.target.value })
+						}
+					>
+						<option value="uncategorized">Select a category</option>
 						{categories.map((item, index) => (
 							<option value={item} key={index}>
 								{item}
@@ -126,16 +159,20 @@ const CreatePost = () => {
 				)}
 				<ReactQuill
 					theme="snow"
-					value={value}
-					onChange={setValue}
 					placeholder="Write something..."
 					className="h-72 mb-12"
 					required
+					onChange={(value) => setFormData({ ...formData, content: value })}
 				/>
 				<Button type="submit" gradientDuoTone="purpleToPink">
 					Publish
 				</Button>
 			</form>
+			{publishError && (
+				<Alert className="mt-5" color="failure">
+					{publishError}
+				</Alert>
+			)}
 		</div>
 	);
 };
