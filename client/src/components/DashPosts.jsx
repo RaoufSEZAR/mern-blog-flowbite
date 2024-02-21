@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-key */
-import { Table } from "flowbite-react";
+import { Button, Modal, Table } from "flowbite-react";
 import { useEffect, useState } from "react";
+import { HiOutlineExclamationCircle } from "react-icons/hi";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -8,24 +9,9 @@ const DashPosts = () => {
 	const { currentUser } = useSelector((state) => state.user);
 	const [userPosts, setUserPosts] = useState([]);
 	const [showMorePosts, setShowMorePosts] = useState(true);
+	const [showModal, setShowModal] = useState(false);
+	const [postIdToDelete, setPostIdToDelete] = useState("");
 
-	const handleShowMore = async () => {
-		const startIndex = userPosts.length;
-		try {
-			const res = await fetch(
-				`/api/post/getPosts?userId=${currentUser._id}&startIndex=${startIndex}`
-			);
-			const data = await res.json();
-			if (res.ok) {
-				setUserPosts((perv) => [...perv, ...data.posts]);
-				if (data.posts && data.posts.length < 9) {
-					setShowMorePosts(false);
-				}
-			}
-		} catch (error) {
-			console.log(error.message);
-		}
-	};
 	useEffect(() => {
 		const fetchPosts = async () => {
 			try {
@@ -45,6 +31,46 @@ const DashPosts = () => {
 			fetchPosts();
 		}
 	}, [currentUser._id, currentUser.isAdmin]);
+	const handleShowMore = async () => {
+		const startIndex = userPosts.length;
+		try {
+			const res = await fetch(
+				`/api/post/getPosts?userId=${currentUser._id}&startIndex=${startIndex}`
+			);
+			const data = await res.json();
+			if (res.ok) {
+				setUserPosts((perv) => [...perv, ...data.posts]);
+				if (data.posts && data.posts.length < 9) {
+					setShowMorePosts(false);
+				}
+			}
+		} catch (error) {
+			console.log(error.message);
+		}
+	};
+
+	const handleDeletePost = async () => {
+		setShowModal(false);
+		try {
+			const res = await fetch(
+				`/api/post/deletepost/${postIdToDelete}/${currentUser._id}`,
+				{
+					method: "DELETE",
+				}
+			);
+			const data = await res.json();
+			if (!res.ok) {
+				console.log(data.message);
+			} else {
+				setUserPosts((posts) =>
+					posts.filter((post) => post._id !== postIdToDelete)
+				);
+			}
+		} catch (error) {
+			console.log(error.message);
+		}
+	};
+
 	return (
 		<div className="table-auto overflow-x-scroll md:overflow-hidden md:mx-auto p-3 scrollbar scrollbar-track-slate-100 dark:scrollbar-track-slate-700 scrollbar-thumb-slate-300 dark:scrollbar-thumb-slate-500">
 			{currentUser.isAdmin && userPosts && userPosts.length > 0 ? (
@@ -84,7 +110,13 @@ const DashPosts = () => {
 										</Link>
 									</Table.Cell>
 									<Table.Cell>{post.category}</Table.Cell>
-									<Table.Cell className="font-medium text-red-500 hover:underline cursor-pointer">
+									<Table.Cell
+										onClick={() => {
+											setShowModal(true);
+											setPostIdToDelete(post._id);
+										}}
+										className="font-medium text-red-500 hover:underline cursor-pointer"
+									>
 										Delete
 									</Table.Cell>
 									<Table.Cell>
@@ -104,6 +136,33 @@ const DashPosts = () => {
 							Show More
 						</button>
 					)}
+
+					<Modal
+						show={showModal}
+						onClose={() => {
+							setShowModal(false);
+						}}
+						popup
+						size="md"
+					>
+						<Modal.Header />
+						<Modal.Body>
+							<div className="text-center">
+								<HiOutlineExclamationCircle className="h-14 w-14 text-gray-400 dark:text-gray-200 mb-4 mx-auto" />
+								<h3 className="mb-5 text-lg text-gray-500 dark:text-gray-400">
+									Are you sure you want to delete this post?
+								</h3>
+								<div className="flex justify-center gap-4">
+									<Button color="failure" onClick={handleDeletePost}>
+										Yes, I'm sure
+									</Button>
+									<Button color="gray" onClick={() => setShowModal(false)}>
+										No, cancel
+									</Button>
+								</div>
+							</div>
+						</Modal.Body>
+					</Modal>
 				</>
 			) : (
 				<p>You have no posts yet</p>
