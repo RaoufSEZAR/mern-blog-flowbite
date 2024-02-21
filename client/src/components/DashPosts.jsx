@@ -87,7 +87,7 @@ const DashPosts = () => {
 							</Table.HeadCell>
 						</Table.Head>
 						{userPosts.map((post) => (
-							<Table.Body className="divide-y">
+							<Table.Body key={post._id} className="divide-y">
 								<Table.Row className="bg-white dark:bg-gray-800 dark:border-gray-700">
 									<Table.Cell>
 										{new Date(post.updatedAt).toLocaleDateString()}
