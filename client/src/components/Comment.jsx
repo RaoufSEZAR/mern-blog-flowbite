@@ -103,6 +103,7 @@ const Comment = ({ comment, onLike, onEdit, onDelete }) => {
 								onClick={() => onLike(comment._id)}
 								className={`text-gray-400 hover:text-blue-500 ${
 									currentUser &&
+									comment.likes &&
 									comment.likes.includes(currentUser._id) &&
 									"!text-blue-500"
 								}`}
