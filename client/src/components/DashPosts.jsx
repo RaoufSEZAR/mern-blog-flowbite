@@ -73,6 +73,20 @@ const DashPosts = () => {
 
 	return (
 		<div className="table-auto overflow-x-scroll md:overflow-hidden md:mx-auto p-3 scrollbar scrollbar-track-slate-100 dark:scrollbar-track-slate-700 scrollbar-thumb-slate-300 dark:scrollbar-thumb-slate-500">
+			<div className="flex items-center justify-around my-4">
+				<h1 className="font-bold text-3xl">Posts</h1>
+				{currentUser.isAdmin && (
+					<Link to="/create-post">
+						<Button
+							type="button"
+							gradientDuoTone={"purpleToPink"}
+							className="w-full"
+						>
+							Create a post
+						</Button>
+					</Link>
+				)}
+			</div>
 			{currentUser.isAdmin && userPosts && userPosts.length > 0 ? (
 				<>
 					<Table hoverable className="shadow-md">
