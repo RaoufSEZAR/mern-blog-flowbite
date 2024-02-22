@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Alert, Button, Textarea } from "flowbite-react";
 import Comment from "./Comment";
 
@@ -10,6 +10,7 @@ const CommentSection = ({ postId }) => {
 	const [comment, setComment] = useState("");
 	const [commentError, setCommentError] = useState(null);
 	const [comments, setComments] = useState([]);
+	const navigate = useNavigate();
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -56,6 +57,35 @@ const CommentSection = ({ postId }) => {
 
 		getcomments();
 	}, [postId]);
+
+	const handleLike = async (commentId) => {
+		console.log(commentId);
+		try {
+			if (!currentUser) {
+				navigate("/sign-in");
+				return;
+			}
+			const res = await fetch(`/api/comment/likeComment/${commentId}`, {
+				method: "PUT",
+			});
+			if (res.ok) {
+				const data = await res.json();
+				setComments(
+					comments.map((com) =>
+						com._id === commentId
+							? {
+									...comment,
+									likes: data.likes,
+									numberOfLikes: data.likes.lenght,
+							  }
+							: comment
+					)
+				);
+			}
+		} catch (error) {
+			console.log(error.message);
+		}
+	};
 	return (
 		<div className="mx-auto max-w-2xl w-full p-3">
 			{currentUser ? (
@@ -109,7 +139,7 @@ const CommentSection = ({ postId }) => {
 					)}
 				</form>
 			)}
-			{comments.length === 0 ? (
+			{comments && comments.length === 0 ? (
 				<p className="text-sm text-teal-500 my-5">No comments yet!</p>
 			) : (
 				<>
@@ -120,7 +150,7 @@ const CommentSection = ({ postId }) => {
 						</div>
 					</div>
 					{comments.map((comment) => (
-						<Comment comment={comment} key={comment._id} />
+						<Comment comment={comment} key={comment._id} onLike={handleLike} />
 					))}
 				</>
 			)}
