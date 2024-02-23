@@ -15,5 +15,10 @@
 	"recent-comments": "Recent comments",
 	"post-image": "POST IMAGE",
 	"post-title": "POST TITLE",
-	"category": "CATEGORY"
+	"category": "CATEGORY",
+	"dashboard": "Dashboard",
+	"users": "Users",
+	"comments": "Comments",
+	"posts": "Posts",
+	"sign-out": "Sign Out"
 }

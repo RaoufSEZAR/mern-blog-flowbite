@@ -15,5 +15,10 @@
 	"recent-comments": "Son YORUMLAR",
 	"post-image": "Gönderi Resmi",
 	"post-title": "Gönderi başlığı",
-	"category": "KATEGORİ"
+	"category": "KATEGORİ",
+	"dashboard": "Ana Paneli",
+	"users": "Kullanıcılar",
+	"comments": "Yorumlar",
+	"posts": "Gönderiler",
+	"sign-out": "Çıkış Yap"
 }

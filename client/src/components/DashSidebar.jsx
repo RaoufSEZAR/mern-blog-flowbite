@@ -11,12 +11,15 @@ import {
 import { Link, useLocation } from "react-router-dom";
 import { signoutSuccess } from "../redux/user/userSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 const DashSidebar = () => {
 	const location = useLocation();
 	const [tab, setTab] = useState("");
 	const dispatch = useDispatch();
 	const { currentUser } = useSelector((state) => state.user);
+
+	const { t } = useTranslation();
 
 	useEffect(() => {
 		const urlParams = new URLSearchParams(location.search);
@@ -52,7 +55,7 @@ const DashSidebar = () => {
 								icon={HiChartPie}
 								as="div"
 							>
-								Dashboard
+								{t("dashboard")}
 							</Sidebar.Item>
 						</Link>
 					)}
@@ -64,7 +67,7 @@ const DashSidebar = () => {
 							labelColor="dark"
 							as={"div"}
 						>
-							Profile
+							{t("profile")}
 						</Sidebar.Item>
 					</Link>
 					{currentUser && currentUser.isAdmin && (
@@ -76,7 +79,7 @@ const DashSidebar = () => {
 									labelColor="dark"
 									as={"div"}
 								>
-									Posts
+									{t("posts")}
 								</Sidebar.Item>
 							</Link>
 							<Link to="/dashboard?tab=users">
@@ -85,7 +88,7 @@ const DashSidebar = () => {
 									icon={HiOutlineUserGroup}
 									as="div"
 								>
-									Users
+									{t("users")}
 								</Sidebar.Item>
 							</Link>
 							<Link to="/dashboard?tab=comments">
@@ -94,7 +97,7 @@ const DashSidebar = () => {
 									icon={HiAnnotation}
 									as="div"
 								>
-									Comments
+									{t("comments")}
 								</Sidebar.Item>
 							</Link>
 						</>
@@ -104,7 +107,8 @@ const DashSidebar = () => {
 						icon={HiArrowSmRight}
 						className="cursor-pointer"
 					>
-						Sign Out
+						{" "}
+						{t("sign-out")}
 					</Sidebar.Item>
 				</Sidebar.ItemGroup>
 			</Sidebar.Items>

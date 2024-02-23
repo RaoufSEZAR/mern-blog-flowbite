@@ -24,6 +24,13 @@ const Header = () => {
 		i18n.changeLanguage(language);
 		localStorage.setItem("prefered-language", language);
 	};
+	useEffect(() => {
+		// Check if language preference exists in local storage
+		const storedLanguage = localStorage.getItem("prefered-language");
+		if (storedLanguage) {
+			i18n.changeLanguage(storedLanguage); // Set language from local storage
+		}
+	}, []);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -48,14 +55,6 @@ const Header = () => {
 			console.log(error.message);
 		}
 	};
-
-	useEffect(() => {
-		// Check if language preference exists in local storage
-		const storedLanguage = localStorage.getItem("prefered-language");
-		if (storedLanguage) {
-			i18n.changeLanguage(storedLanguage); // Set language from local storage
-		}
-	}, []);
 
 	return (
 		<Navbar className="border-b-2">
