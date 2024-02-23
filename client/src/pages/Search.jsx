@@ -151,7 +151,7 @@ export default function Search() {
 			</form>
 
 			<div className="flex flex-col container md:mx-auto">
-				<h1 className="text-3xl font-semibold sm:border-b border-gray-500 p-3 mt-5 mx-auto">
+				<h1 className="text-3xl font-semibold sm:border-b border-pink-500 text-pink-600 p-3 mt-5 mx-auto">
 					{t("results")}
 				</h1>
 				<div className="p-7 flex flex-wrap gap-4">
