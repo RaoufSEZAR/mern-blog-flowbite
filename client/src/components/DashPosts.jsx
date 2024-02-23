@@ -85,7 +85,7 @@ const DashPosts = () => {
 							gradientDuoTone={"purpleToPink"}
 							className="w-full"
 						>
-							{t("create-post")}{" "}
+							{t("create-post")}
 						</Button>
 					</Link>
 				)}

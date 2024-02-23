@@ -54,7 +54,7 @@ export default function PostPage() {
 	if (loading)
 		return (
 			<div className="flex justify-center items-center min-h-screen">
-				<Spinner size="xl" />
+				<Spinner color={"pink"} size="xl" />
 			</div>
 		);
 	return (
@@ -86,7 +86,7 @@ export default function PostPage() {
 				dangerouslySetInnerHTML={{ __html: post && post.content }}
 			></div>
 			<div className="max-w-4xl mx-auto w-full">
-				<CallToAction />{" "}
+				<CallToAction />
 			</div>
 			<CommentSection postId={post._id} />
 
