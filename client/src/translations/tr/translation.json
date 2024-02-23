@@ -55,5 +55,6 @@
 	"sign-up": "Üye ol",
 	"project-desc": "Bu bir MERN Projesidir. Epostan ve şifren ile üye olabilirsin veya Google hesabınla.",
 	"have-account": "Hesabın yok mu?",
-	"have-an-account": "Hesabın var mı?"
+	"have-an-account": "Hesabın var mı?",
+	"find-more-articles": "Kategorilere tıklayarak bu konularla ilgili daha fazla makaleye ulaşabilirsiniz."
 }

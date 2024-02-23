@@ -58,5 +58,6 @@
 	"sign-up": "Sign Up",
 	"project-desc": "This is a MERN Project. You can sign up with your email and password or with your google account.",
 	"have-account": "Don't have an account?",
-	"have-an-account": "Have an account?"
+	"have-an-account": "Have an account?",
+	"find-more-articles": "You can find more articles related to those topics by clicking on categories."
 }
