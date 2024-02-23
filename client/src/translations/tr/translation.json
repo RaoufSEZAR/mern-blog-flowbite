@@ -43,5 +43,17 @@
 	"oldest": "En eski",
 	"latest": "En yeni",
 	"read": "Makaleyi oku",
-	"number-likes": "Beğenme sayısı"
+	"number-likes": "Beğenme sayısı",
+	"about-blog": "Blogum hakkında",
+	"about-desc-1": "Raouf'in Blog'una hoş geldiniz! Bu blog, Raouf Satto tarafından düşüncelerini ve fikirlerini dünyayla paylaşmak için kişisel bir proje olarak oluşturulmuştur. Raouf, teknoloji, kodlama ve aradaki her şey hakkında yazmayı seven tutkulu bir geliştiricidir.",
+	"about-desc-2": "Bu blogda, web geliştirme, yazılım mühendisliği ve programlama dilleri gibi konuları kapsayan haftalık makaleler ve öğreticiler bulacaksınız. Raouf, sürekli olarak yeni teknolojiler keşfetmekte ve öğrenmekte olduğundan, yeni içerikler için sık sık kontrol etmeyi unutmayın!",
+	"about-desc-3": "Yazılarımıza yorum yaparak ve diğer okuyucularla etkileşime geçerek aktif bir şekilde katılımınızı sağlamaya davet ediyoruz. Diğer kişilerin yorumlarını beğenerek ve onlara yanıt vererek takdirinizi gösterin. Birbirlerinin gelişimine ve iyileşmesine yardımcı olacak bir öğrenme topluluğunun varlığına inanıyoruz.",
+	"home": "Ana Sayfa",
+	"about": "Hakkinda",
+	"articles": "Makaleler",
+	"sign-in": "Giriş Yap",
+	"sign-up": "Üye ol",
+	"project-desc": "Bu bir MERN Projesidir. Epostan ve şifren ile üye olabilirsin veya Google hesabınla.",
+	"have-account": "Hesabın yok mu?",
+	"have-an=account": "Hesabın var mı?"
 }

@@ -121,12 +121,14 @@ const Header = () => {
 							<Dropdown.Item>{t("profile")}</Dropdown.Item>
 						</Link>
 						<Dropdown.Divider />
-						<Dropdown.Item onClick={handleSignout}>Sign out</Dropdown.Item>
+						<Dropdown.Item onClick={handleSignout}>
+							{t("sign-out")}
+						</Dropdown.Item>
 					</Dropdown>
 				) : (
 					<Link to="/sign-in">
 						<Button gradientDuoTone="purpleToBlue" outline>
-							Sign In
+							{t("sign-in")}
 						</Button>
 					</Link>
 				)}
@@ -134,13 +136,13 @@ const Header = () => {
 			</div>
 			<Navbar.Collapse>
 				<Navbar.Link active={path === "/"} as={"div"}>
-					<Link to="/">Home</Link>
+					<Link to="/">{t("home")}</Link>
 				</Navbar.Link>
 				<Navbar.Link active={path === "/about"} as={"div"}>
-					<Link to="/about">About</Link>
+					<Link to="/about">{t("about")}</Link>
 				</Navbar.Link>
-				<Navbar.Link active={path === "/projects"} as={"div"}>
-					<Link to="/projects">Projects</Link>
+				<Navbar.Link active={path === "/articles"} as={"div"}>
+					<Link to="/articles"> {t("articles")}</Link>
 				</Navbar.Link>
 			</Navbar.Collapse>
 		</Navbar>

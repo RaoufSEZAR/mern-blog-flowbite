@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Signin from "./pages/Signin";
-import Projects from "./pages/Projects";
+import Articles from "./pages/Articles";
 import About from "./pages/About";
 import Dashboard from "./pages/Dashboard";
 import Header from "./components/Header";
@@ -23,7 +23,7 @@ function App() {
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/about" element={<About />} />
-				<Route path="/projects" element={<Projects />} />
+				<Route path="/articles" element={<Articles />} />
 				<Route path="/sign-in" element={<Signin />} />
 				<Route path="/post/:postSlug" element={<PostPage />} />
 				<Route path="/search" element={<Search />} />

@@ -74,7 +74,7 @@ export default function DashboardComp() {
 				<div className="flex flex-col p-3 dark:bg-slate-800 gap-4 md:w-72 w-full rounded-md shadow-md">
 					<div className="flex justify-between">
 						<div className="">
-							<h3 className="text-gray-500 text-md uppercase">
+							<h3 className="text-gray-400 text-md uppercase">
 								{t("total-users")}
 							</h3>
 							<p className="text-2xl">{totalUsers}</p>
@@ -86,13 +86,13 @@ export default function DashboardComp() {
 							<HiArrowNarrowUp />
 							{lastMonthUsers}
 						</span>
-						<div className="text-gray-500">{t("last-month")}</div>
+						<div className="text-gray-400">{t("last-month")}</div>
 					</div>
 				</div>
 				<div className="flex flex-col p-3 dark:bg-slate-800 gap-4 md:w-72 w-full rounded-md shadow-md">
 					<div className="flex justify-between">
 						<div className="">
-							<h3 className="text-gray-500 text-md uppercase">
+							<h3 className="text-gray-400 text-md uppercase">
 								{t("total-comments")}
 							</h3>
 							<p className="text-2xl">{totalComments}</p>
@@ -104,13 +104,13 @@ export default function DashboardComp() {
 							<HiArrowNarrowUp />
 							{lastMonthComments}
 						</span>
-						<div className="text-gray-500">{t("last-month")}</div>
+						<div className="text-gray-400">{t("last-month")}</div>
 					</div>
 				</div>
 				<div className="flex flex-col p-3 dark:bg-slate-800 gap-4 md:w-72 w-full rounded-md shadow-md">
 					<div className="flex justify-between">
 						<div className="">
-							<h3 className="text-gray-500 text-md uppercase">
+							<h3 className="text-gray-400 text-md uppercase">
 								{t("total-posts")}
 							</h3>
 							<p className="text-2xl">{totalPosts}</p>
@@ -122,7 +122,7 @@ export default function DashboardComp() {
 							<HiArrowNarrowUp />
 							{lastMonthPosts}
 						</span>
-						<div className="text-gray-500">{t("last-month")}</div>
+						<div className="text-gray-400">{t("last-month")}</div>
 					</div>
 				</div>
 			</div>

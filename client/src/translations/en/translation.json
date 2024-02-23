@@ -46,5 +46,17 @@
 	"oldest": "Oldest",
 	"latest": "Latest",
 	"read": "Read article",
-	"number-likes": "Number of likes"
+	"number-likes": "Number of likes",
+	"about-blog": "About my Blog",
+	"about-desc-1": "Welcome to Raouf's Blog! This platform is Raouf Satto's personal endeavor aimed at sharing his insights and perspectives with the community. Raouf, a dedicated developer, delights in discussing various aspects of technology, coding, and related subjects.",
+	"about-desc-2": "Here, you'll discover a collection of weekly articles and tutorials covering a wide array of topics, including web development, software engineering, and programming languages. With Raouf's perpetual curiosity driving the exploration of new technologies, expect a steady stream of fresh content.",
+	"about-desc-3": "We invite you to actively participate by leaving comments on our posts and engaging with fellow readers. Show your appreciation by liking others' contributions and joining in on the discussions. We firmly believe in fostering a supportive community where mutual learning and growth thrive.",
+	"home": "Home",
+	"about": "About",
+	"articles": "Articles",
+	"sign-in": "Sign In",
+	"sign-up": "Sign Up",
+	"project-desc": "This is a MERN Project. You can sign up with your email and password or with your google account.",
+	"have-account": "Don't have an account?",
+	"have-an=account": "Have an account?"
 }

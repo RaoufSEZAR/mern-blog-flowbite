@@ -156,9 +156,9 @@ export default function Search() {
 				</h1>
 				<div className="p-7 flex flex-wrap gap-4">
 					{!loading && posts.length === 0 && (
-						<p className="text-xl text-gray-500">{t("no-post")}</p>
+						<p className="text-xl text-gray-400">{t("no-post")}</p>
 					)}
-					{loading && <p className="text-xl text-gray-500">Loading...</p>}
+					{loading && <p className="text-xl text-gray-400">Loading...</p>}
 					{!loading &&
 						posts &&
 						posts.map((post) => <PostCard key={post._id} post={post} />)}

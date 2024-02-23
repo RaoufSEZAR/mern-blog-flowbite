@@ -2,8 +2,10 @@ import { Alert, Button, Label, Spinner, TextInput } from "flowbite-react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import OAuth from "../components/OAuth";
+import { useTranslation } from "react-i18next";
 
 const Signup = () => {
+	const { t } = useTranslation();
 	const [formData, setFormData] = useState({});
 	const [loading, setLoading] = useState(false);
 	const [errorMessage, setErrorMessage] = useState(null);
@@ -40,20 +42,16 @@ const Signup = () => {
 	};
 
 	return (
-		<div className="min-h-screem mt-20">
+		<div className="min-h-screen mt-20">
 			<div className="flex p-3 mx-auto max-w-3xl flex-col md:flex-row md:items-center gap-5">
 				{/* left */}
 				<div className="flex-1">
-					<Link to="/" className=" font-bold dark:text-white text-4xl">
-						<span className="px-2 py-1 bg-gradient-to-r from-indigo-500 via-pink-500 to-pink-500 rounded-lg text-white">
-							Raouf's
+					<Link to="/" className="w-full font-bold dark:text-white text-4xl">
+						<span className="px-2 py-1 w-full bg-gradient-to-r text-pink-500 rounded-lg">
+							{t("home-title")}
 						</span>
-						Blog
 					</Link>
-					<p className="text-sm mt-5">
-						This is a MERN Project. You can sign up with your email and password
-						or with your google account
-					</p>
+					<p className="text-sm mt-5">{t("project-desc")}</p>
 				</div>
 				{/* right */}
 				<div className="flex-1">
@@ -95,7 +93,7 @@ const Signup = () => {
 									<Spinner size="sm" /> <span className="pl-3">Loading...</span>
 								</>
 							) : (
-								"Sign Up"
+								t("sign-up")
 							)}
 						</Button>
 						<OAuth />
@@ -103,7 +101,7 @@ const Signup = () => {
 					<div className="flex gap-2 text-sm mt-3 justify-center">
 						<span>Have an account?</span>
 						<Link to="/sign-in" className="text-blue-500">
-							Sign In
+							{t("sign-in")}
 						</Link>
 					</div>
 					{errorMessage && (
