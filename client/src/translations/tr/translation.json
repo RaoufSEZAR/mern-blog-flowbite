@@ -18,6 +18,7 @@
 	"category": "KATEGORİ",
 	"dashboard": "Ana Paneli",
 	"users": "Kullanıcılar",
+	"user": "Kullanıcı",
 	"comments": "Yorumlar",
 	"posts": "Gönderiler",
 	"sign-out": "Çıkış Yap",
@@ -26,5 +27,11 @@
 	"delete-account": "Hesabı sil",
 	"hesap-sil-modal": "Hesabını silmek istediğinden emin misin?",
 	"yes-modal": "Evet eminim",
-	"no-modal": "Hayır, iptal et"
+	"no-modal": "Hayır, iptal et",
+	"updated-date": "GÜNCELLENME TARİHİ",
+	"delete": "Sil",
+	"show-more": "Daha fazla göster",
+	"created-date": "Oluşturma TARİHİ",
+	"email": "E-posta",
+	"admin": "Yönetici"
 }

@@ -72,12 +72,12 @@ export default function DashUsers() {
 				<>
 					<Table hoverable className="shadow-md">
 						<Table.Head>
-							<Table.HeadCell>Date created</Table.HeadCell>
-							<Table.HeadCell>User image</Table.HeadCell>
-							<Table.HeadCell>Username</Table.HeadCell>
-							<Table.HeadCell>Email</Table.HeadCell>
-							<Table.HeadCell>Admin</Table.HeadCell>
-							<Table.HeadCell>Delete</Table.HeadCell>
+							<Table.HeadCell>{t("created-date")}</Table.HeadCell>
+							<Table.HeadCell>{t("user-image")}</Table.HeadCell>
+							<Table.HeadCell>{t("username")}</Table.HeadCell>
+							<Table.HeadCell>{t("email")}</Table.HeadCell>
+							<Table.HeadCell>{t("admin")}</Table.HeadCell>
+							<Table.HeadCell>{t("delete")}</Table.HeadCell>
 						</Table.Head>
 						{users.map((user) => (
 							<Table.Body className="divide-y" key={user._id}>
@@ -109,7 +109,7 @@ export default function DashUsers() {
 											}}
 											className="font-medium text-red-500 hover:underline cursor-pointer"
 										>
-											Delete
+											{t("delete")}
 										</span>
 									</Table.Cell>
 								</Table.Row>

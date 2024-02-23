@@ -77,7 +77,7 @@ const DashPosts = () => {
 	return (
 		<div className="table-auto overflow-x-scroll md:overflow-hidden md:mx-auto p-3 scrollbar scrollbar-track-slate-100 dark:scrollbar-track-slate-700 scrollbar-thumb-slate-300 dark:scrollbar-thumb-slate-500">
 			<div className="flex items-center justify-around my-4">
-				<h1 className="font-bold text-3xl">Posts</h1>
+				<h1 className="font-bold text-3xl">{t("posts")}</h1>
 				{currentUser.isAdmin && (
 					<Link to="/create-post">
 						<Button
@@ -85,7 +85,7 @@ const DashPosts = () => {
 							gradientDuoTone={"purpleToPink"}
 							className="w-full"
 						>
-							Create a post
+							{t("create-post")}{" "}
 						</Button>
 					</Link>
 				)}
@@ -94,13 +94,13 @@ const DashPosts = () => {
 				<>
 					<Table hoverable className="shadow-md">
 						<Table.Head>
-							<Table.HeadCell>Updated Date </Table.HeadCell>
-							<Table.HeadCell>Image</Table.HeadCell>
-							<Table.HeadCell>Title</Table.HeadCell>
-							<Table.HeadCell>Category</Table.HeadCell>
-							<Table.HeadCell>Delete</Table.HeadCell>
+							<Table.HeadCell>{t("updated-date")} </Table.HeadCell>
+							<Table.HeadCell>{t("post-image")}</Table.HeadCell>
+							<Table.HeadCell>{t("post-title")}</Table.HeadCell>
+							<Table.HeadCell>{t("category")}</Table.HeadCell>
+							<Table.HeadCell>{t("delete")}</Table.HeadCell>
 							<Table.HeadCell>
-								<span>Edit</span>
+								<span>{t("update")}</span>
 							</Table.HeadCell>
 						</Table.Head>
 						{userPosts.map((post) => (
@@ -134,12 +134,12 @@ const DashPosts = () => {
 										}}
 										className="font-medium text-red-500 hover:underline cursor-pointer"
 									>
-										Delete
+										{t("delete")}
 									</Table.Cell>
 									<Table.Cell>
 										<Link to={`/update-post/${post._id}`}>
 											<span className="text-purple-500 cursor-pointer">
-												Edit
+												{t("update")}
 											</span>
 										</Link>
 									</Table.Cell>
@@ -152,7 +152,7 @@ const DashPosts = () => {
 							onClick={handleShowMore}
 							className="w-full text-purple-500 self-center text-sm py-7"
 						>
-							Show More
+							{t("show-more")}
 						</button>
 					)}
 
