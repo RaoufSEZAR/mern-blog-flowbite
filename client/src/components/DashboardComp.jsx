@@ -110,7 +110,9 @@ export default function DashboardComp() {
 				<div className="flex flex-col p-3 dark:bg-slate-800 gap-4 md:w-72 w-full rounded-md shadow-md">
 					<div className="flex justify-between">
 						<div className="">
-							<h3 className="text-gray-500 text-md uppercase">Total Posts</h3>
+							<h3 className="text-gray-500 text-md uppercase">
+								{t("total-posts")}
+							</h3>
 							<p className="text-2xl">{totalPosts}</p>
 						</div>
 						<HiDocumentText className="bg-lime-600  text-white rounded-full text-5xl p-3 shadow-lg" />
@@ -127,15 +129,15 @@ export default function DashboardComp() {
 			<div className="flex flex-wrap gap-4 py-3 mx-auto justify-center">
 				<div className="flex flex-col w-full md:w-auto shadow-md p-2 rounded-md dark:bg-gray-800">
 					<div className="flex justify-between  p-3 text-sm font-semibold">
-						<h1 className="text-center p-2">Recent users</h1>
+						<h1 className="text-center p-2">{t("recent-users")}</h1>
 						<Button outline gradientDuoTone="purpleToPink">
-							<Link to={"/dashboard?tab=users"}>See all</Link>
+							<Link to={"/dashboard?tab=users"}>{t("see-all")}</Link>
 						</Button>
 					</div>
 					<Table hoverable>
 						<Table.Head>
-							<Table.HeadCell>User image</Table.HeadCell>
-							<Table.HeadCell>Username</Table.HeadCell>
+							<Table.HeadCell>{t("user-image")}</Table.HeadCell>
+							<Table.HeadCell>{t("username")}</Table.HeadCell>
 						</Table.Head>
 						{users &&
 							users.map((user) => (
@@ -156,15 +158,15 @@ export default function DashboardComp() {
 				</div>
 				<div className="flex flex-col w-full md:w-auto shadow-md p-2 rounded-md dark:bg-gray-800">
 					<div className="flex justify-between  p-3 text-sm font-semibold">
-						<h1 className="text-center p-2">Recent comments</h1>
+						<h1 className="text-center p-2">{t("recent-comments")}</h1>
 						<Button outline gradientDuoTone="purpleToPink">
-							<Link to={"/dashboard?tab=comments"}>See all</Link>
+							<Link to={"/dashboard?tab=comments"}>{t("see-all")}</Link>
 						</Button>
 					</div>
 					<Table hoverable>
 						<Table.Head>
-							<Table.HeadCell>Comment content</Table.HeadCell>
-							<Table.HeadCell>Likes</Table.HeadCell>
+							<Table.HeadCell> {t("comment-content")}</Table.HeadCell>
+							<Table.HeadCell>{t("likes")}</Table.HeadCell>
 						</Table.Head>
 						{comments &&
 							comments.map((comment) => (
@@ -181,16 +183,16 @@ export default function DashboardComp() {
 				</div>
 				<div className="flex flex-col w-full md:w-auto shadow-md p-2 rounded-md dark:bg-gray-800">
 					<div className="flex justify-between  p-3 text-sm font-semibold">
-						<h1 className="text-center p-2">Recent posts</h1>
+						<h1 className="text-center p-2">{t("recent-posts")}</h1>
 						<Button outline gradientDuoTone="purpleToPink">
-							<Link to={"/dashboard?tab=posts"}>See all</Link>
+							<Link to={"/dashboard?tab=posts"}>{t("see-all")}</Link>
 						</Button>
 					</div>
 					<Table hoverable>
 						<Table.Head>
-							<Table.HeadCell>Post image</Table.HeadCell>
-							<Table.HeadCell>Post Title</Table.HeadCell>
-							<Table.HeadCell>Category</Table.HeadCell>
+							<Table.HeadCell>{t("post-image")}</Table.HeadCell>
+							<Table.HeadCell>{t("post-title")}</Table.HeadCell>
+							<Table.HeadCell>{t("category")}</Table.HeadCell>
 						</Table.Head>
 						{posts &&
 							posts.map((post) => (

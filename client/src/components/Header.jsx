@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Avatar, Button, Dropdown, Navbar, TextInput } from "flowbite-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaMoon, FaSun } from "react-icons/fa";
@@ -22,6 +22,7 @@ const Header = () => {
 
 	const changeLanguage = (language) => {
 		i18n.changeLanguage(language);
+		localStorage.setItem("prefered-language", language);
 	};
 
 	const handleSubmit = (e) => {
@@ -47,6 +48,14 @@ const Header = () => {
 			console.log(error.message);
 		}
 	};
+
+	useEffect(() => {
+		// Check if language preference exists in local storage
+		const storedLanguage = localStorage.getItem("prefered-language");
+		if (storedLanguage) {
+			i18n.changeLanguage(storedLanguage); // Set language from local storage
+		}
+	}, []);
 
 	return (
 		<Navbar className="border-b-2">
