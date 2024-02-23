@@ -33,5 +33,13 @@
 	"show-more": "Daha fazla göster",
 	"created-date": "Oluşturma TARİHİ",
 	"email": "E-posta",
-	"admin": "Yönetici"
+	"admin": "Yönetici",
+	"results": "Gönderi sonuçları:",
+	"search-term": "Arama terimi:",
+	"no-post": "Herhangi Bir Gönderi Bulunamadı.",
+	"sort": "Sirala",
+	"apply-filter": "Filtreleri Uygula",
+	"uncategorized": "Kategorize edilmemiş",
+	"oldest": "En eski",
+	"latest": "En yeni"
 }

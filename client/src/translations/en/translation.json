@@ -36,5 +36,13 @@
 	"show-more": "Show more",
 	"created-date": "Created date",
 	"email": "Email",
-	"admin": "Admin"
+	"admin": "Admin",
+	"results": "Posts results:",
+	"search-term": "Search Term:",
+	"no-post": "No posts found.",
+	"sort": "Sort By:",
+	"apply-filter": "Apply Filters",
+	"uncategorized": "Uncategorized",
+	"oldest": "Oldest",
+	"latest": "Latest"
 }

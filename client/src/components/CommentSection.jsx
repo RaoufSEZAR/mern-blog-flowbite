@@ -134,7 +134,7 @@ const CommentSection = ({ postId }) => {
 					</Link>
 				</div>
 			) : (
-				<div className="text-sm text-purple-500 my-5 flex gap-1">
+				<div className="text-sm text-pink-500 my-5 flex gap-1">
 					You must be signed in to comment.
 					<Link className="text-blue-500 hover:underline" to={"/sign-in"}>
 						Sign In
@@ -145,7 +145,7 @@ const CommentSection = ({ postId }) => {
 			{currentUser && (
 				<form
 					onSubmit={handleSubmit}
-					className="border border-purple-500 rounded-md p-3"
+					className="border border-pink-500 rounded-md p-3"
 				>
 					<Textarea
 						onChange={(e) => setComment(e.target.value)}
@@ -170,7 +170,7 @@ const CommentSection = ({ postId }) => {
 				</form>
 			)}
 			{comments.length === 0 ? (
-				<p className="text-sm text-purple-500 my-5">No comments yet!</p>
+				<p className="text-sm text-pink-500 my-5">No comments yet!</p>
 			) : (
 				<>
 					<div className="text-sm my-5 flex items-center gap-1">

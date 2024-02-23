@@ -2,8 +2,11 @@ import { Button, Select, TextInput } from "flowbite-react";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import PostCard from "../components/PostCard";
+import { useTranslation } from "react-i18next";
 
 export default function Search() {
+	const { t } = useTranslation();
+
 	const categories = ["Nextjs", "Angular", "React", "Nodejs", "Javascript"];
 
 	const [sidebarData, setSidebarData] = useState({
@@ -102,56 +105,58 @@ export default function Search() {
 	};
 
 	return (
-		<div className="flex flex-col md:flex-row">
-			<div className="p-7 border-b md:border-r md:min-h-screen border-gray-500">
-				<form className="flex flex-col gap-8" onSubmit={handleSubmit}>
-					<div className="flex   items-center gap-2">
-						<label className="whitespace-nowrap font-semibold">
-							Search Term:
-						</label>
-						<TextInput
-							placeholder="Search..."
-							id="searchTerm"
-							type="text"
-							value={sidebarData.searchTerm}
-							onChange={handleChange}
-						/>
-					</div>
-					<div className="flex items-center gap-2">
-						<label className="font-semibold">Sort:</label>
-						<Select onChange={handleChange} value={sidebarData.sort} id="sort">
-							<option value="desc">Latest</option>
-							<option value="asc">Oldest</option>
-						</Select>
-					</div>
-					<div className="flex items-center gap-2">
-						<label className="font-semibold">Category:</label>
-						<Select
-							onChange={handleChange}
-							value={sidebarData.category}
-							id="category"
-						>
-							<option value="uncategorized">Uncategorized</option>
+		<div className=" flex flex-col justify-center my-5">
+			<form
+				className="flex md:flex-row flex-col justify-center items-center gap-8"
+				onSubmit={handleSubmit}
+			>
+				<div className="flex items-center gap-2">
+					<label className="whitespace-nowrap font-semibold">
+						{t("search-term")}
+					</label>
+					<TextInput
+						placeholder="Search..."
+						id="searchTerm"
+						type="text"
+						value={sidebarData.searchTerm}
+						onChange={handleChange}
+					/>
+				</div>
+				<div className="flex items-center gap-2">
+					<label className="font-semibold">{t("sort")}</label>
+					<Select onChange={handleChange} value={sidebarData.sort} id="sort">
+						<option value="desc"> {t("latest")}</option>
+						<option value="asc"> {t("oldest")}</option>
+					</Select>
+				</div>
+				<div className="flex items-center gap-2">
+					<label className="font-semibold">{t("category")}:</label>
+					<Select
+						onChange={handleChange}
+						value={sidebarData.category}
+						id="category"
+					>
+						<option value="uncategorized"> {t("uncategorized")}</option>
 
-							{categories.map((item, index) => (
-								<option value={item} key={index}>
-									{item}
-								</option>
-							))}
-						</Select>
-					</div>
-					<Button type="submit" outline gradientDuoTone="purpleToPink">
-						Apply Filters
-					</Button>
-				</form>
-			</div>
-			<div className="w-full">
+						{categories.map((item, index) => (
+							<option value={item} key={index}>
+								{item}
+							</option>
+						))}
+					</Select>
+				</div>
+				<Button type="submit" outline gradientDuoTone="purpleToPink">
+					{t("apply-filter")}
+				</Button>
+			</form>
+
+			<div className="flex flex-col container md:mx-auto">
 				<h1 className="text-3xl font-semibold sm:border-b border-gray-500 p-3 mt-5 ">
-					Posts results:
+					{t("results")}
 				</h1>
 				<div className="p-7 flex flex-wrap gap-4">
 					{!loading && posts.length === 0 && (
-						<p className="text-xl text-gray-500">No posts found.</p>
+						<p className="text-xl text-gray-500">{t("no-post")}</p>
 					)}
 					{loading && <p className="text-xl text-gray-500">Loading...</p>}
 					{!loading &&
@@ -160,9 +165,9 @@ export default function Search() {
 					{showMore && (
 						<button
 							onClick={handleShowMore}
-							className="text-purple-500 text-lg hover:underline p-7 w-full"
+							className="text-pink-500 text-lg hover:underline p-7 w-full"
 						>
-							Show More
+							{t("show-more")}
 						</button>
 					)}
 				</div>
