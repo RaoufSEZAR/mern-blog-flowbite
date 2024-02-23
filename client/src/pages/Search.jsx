@@ -150,7 +150,7 @@ export default function Search() {
 				</Button>
 			</form>
 
-			<div className="flex flex-col container md:mx-auto">
+			<div className="flex flex-col md:mx-auto">
 				<h1 className="text-3xl font-semibold sm:border-b border-pink-500 text-pink-600 p-3 mt-5 mx-auto">
 					{t("results")}
 				</h1>
