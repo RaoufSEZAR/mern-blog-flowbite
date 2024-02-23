@@ -21,6 +21,7 @@ import {
 	updateUserStart,
 	updateUserSuccess,
 } from "../redux/user/userSlice";
+import { useTranslation } from "react-i18next";
 
 const DashProfile = () => {
 	const { currentUser, error, loading } = useSelector((state) => state.user);
@@ -39,6 +40,7 @@ const DashProfile = () => {
 	const handleUserInfo = async (e) => {
 		setFormData({ ...formData, [e.target.id]: e.target.value });
 	};
+	const { t } = useTranslation();
 
 	const handleImageChange = (e) => {
 		const file = e.target.files[0];
@@ -174,7 +176,9 @@ const DashProfile = () => {
 
 	return (
 		<div className="max-w-lg mx-auto p-3 w-full">
-			<h1 className="my-7 font-semibold text-3xl text-center">Profile</h1>
+			<h1 className="my-7 font-semibold text-3xl text-center">
+				{t("profile")}
+			</h1>
 			<form onSubmit={handleSubmit} className="flex flex-col gap-3">
 				<input
 					type="file"
@@ -248,7 +252,7 @@ const DashProfile = () => {
 					outline
 					disabled={loading || imageFileUploading}
 				>
-					{loading ? "Loading..." : "Update" }
+					{loading ? "Loading..." : t("update")}
 				</Button>
 				{currentUser.isAdmin && (
 					<Link to="/create-post">
@@ -257,17 +261,17 @@ const DashProfile = () => {
 							gradientDuoTone={"purpleToPink"}
 							className="w-full"
 						>
-							Create a post
+							{t("create-post")}
 						</Button>
 					</Link>
 				)}
 			</form>
 			<div className="flex justify-between mt-4 text-red-500">
 				<span className="cursor-pointer" onClick={() => setShowModal(true)}>
-					Delete Account
+					{t("delete-account")}
 				</span>
 				<span className="cursor-pointer" onClick={signout}>
-					Sign Out
+					{t("sign-out")}
 				</span>
 			</div>
 
@@ -298,14 +302,14 @@ const DashProfile = () => {
 					<div className="text-center">
 						<HiOutlineExclamationCircle className="h-14 w-14 text-gray-400 dark:text-gray-200 mb-4 mx-auto" />
 						<h3 className="mb-5 text-lg text-gray-500 dark:text-gray-400">
-							Are you sure you want to delete your account?
+							{t("hesap-sil-modal")}
 						</h3>
 						<div className="flex justify-center gap-4">
 							<Button color="failure" onClick={handleDeleteUser}>
-								Yes, I'm sure
+								{t("yes-modal")}
 							</Button>
 							<Button color="gray" onClick={() => setShowModal(false)}>
-								No, cancel
+								{t("no-modal")}
 							</Button>
 						</div>
 					</div>

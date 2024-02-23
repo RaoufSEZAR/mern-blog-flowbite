@@ -4,9 +4,12 @@ import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import Comment from "./Comment";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
+import { useTranslation } from "react-i18next";
 
 // eslint-disable-next-line react/prop-types
 const CommentSection = ({ postId }) => {
+	const { t } = useTranslation();
+
 	const { currentUser } = useSelector((state) => state.user);
 	const [comment, setComment] = useState("");
 	const [commentError, setCommentError] = useState(null);
@@ -201,17 +204,17 @@ const CommentSection = ({ postId }) => {
 					<div className="text-center">
 						<HiOutlineExclamationCircle className="h-14 w-14 text-gray-400 dark:text-gray-200 mb-4 mx-auto" />
 						<h3 className="mb-5 text-lg text-gray-500 dark:text-gray-400">
-							Are you sure you want to delete this comment?
+							{t("comment-sil-modal")}{" "}
 						</h3>
 						<div className="flex justify-center gap-4">
 							<Button
 								color="failure"
 								onClick={() => handleDelete(commentToDelete)}
 							>
-								Yes, I'm sure
+								{t("yes-modal")}
 							</Button>
 							<Button color="gray" onClick={() => setShowModal(false)}>
-								No, cancel
+								{t("no-modal")}
 							</Button>
 						</div>
 					</div>

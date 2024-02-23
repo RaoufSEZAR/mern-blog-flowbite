@@ -1,11 +1,14 @@
 /* eslint-disable react/jsx-key */
 import { Button, Modal, Table } from "flowbite-react";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const DashPosts = () => {
+	const { t } = useTranslation();
+
 	const { currentUser } = useSelector((state) => state.user);
 	const [userPosts, setUserPosts] = useState([]);
 	const [showMorePosts, setShowMorePosts] = useState(true);
@@ -166,14 +169,14 @@ const DashPosts = () => {
 							<div className="text-center">
 								<HiOutlineExclamationCircle className="h-14 w-14 text-gray-400 dark:text-gray-200 mb-4 mx-auto" />
 								<h3 className="mb-5 text-lg text-gray-500 dark:text-gray-400">
-									Are you sure you want to delete this post?
+									{t("post-sil-modal")}{" "}
 								</h3>
 								<div className="flex justify-center gap-4">
 									<Button color="failure" onClick={handleDeletePost}>
-										Yes, I'm sure
+										{t("yes-modal")}
 									</Button>
 									<Button color="gray" onClick={() => setShowModal(false)}>
-										No, cancel
+										{t("no-modal")}
 									</Button>
 								</div>
 							</div>

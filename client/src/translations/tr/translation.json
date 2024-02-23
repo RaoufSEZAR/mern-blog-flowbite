@@ -20,5 +20,11 @@
 	"users": "Kullanıcılar",
 	"comments": "Yorumlar",
 	"posts": "Gönderiler",
-	"sign-out": "Çıkış Yap"
+	"sign-out": "Çıkış Yap",
+	"create-post": "Gönderi oluştur",
+	"update": "Güncelle",
+	"delete-account": "Hesabı sil",
+	"hesap-sil-modal": "Hesabını silmek istediğinden emin misin?",
+	"yes-modal": "Evet eminim",
+	"no-modal": "Hayır, iptal et"
 }
