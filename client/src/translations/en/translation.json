@@ -7,7 +7,7 @@
 	"last-month": "Last month",
 	"see-all": "See all",
 	"likes": "LIKES",
-	"comment-content": "COMMENT CONTENT",
+	"comment-content": "Comment content",
 	"user-image": "USER IMAGE",
 	"username": "USERNAME",
 	"recent-users": "Recent users",
@@ -44,5 +44,7 @@
 	"apply-filter": "Apply Filters",
 	"uncategorized": "Uncategorized",
 	"oldest": "Oldest",
-	"latest": "Latest"
+	"latest": "Latest",
+	"read": "Read article",
+	"number-likes": "Number of likes"
 }

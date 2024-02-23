@@ -79,12 +79,12 @@ export default function DashComments() {
 				<>
 					<Table hoverable className="shadow-md">
 						<Table.Head>
-							<Table.HeadCell>Date updated</Table.HeadCell>
-							<Table.HeadCell>Comment content</Table.HeadCell>
-							<Table.HeadCell>Number of likes</Table.HeadCell>
-							<Table.HeadCell>PostId</Table.HeadCell>
-							<Table.HeadCell>UserId</Table.HeadCell>
-							<Table.HeadCell>Delete</Table.HeadCell>
+							<Table.HeadCell>{t("updated-date")}</Table.HeadCell>
+							<Table.HeadCell>{t("comment-content")}</Table.HeadCell>
+							<Table.HeadCell>{t("number-likes")}</Table.HeadCell>
+							<Table.HeadCell>postId</Table.HeadCell>
+							<Table.HeadCell>userId</Table.HeadCell>
+							<Table.HeadCell>{t("delete")}</Table.HeadCell>
 						</Table.Head>
 						{comments.map((comment) => (
 							<Table.Body className="divide-y" key={comment._id}>
@@ -104,7 +104,7 @@ export default function DashComments() {
 											}}
 											className="font-medium text-red-500 hover:underline cursor-pointer"
 										>
-											Delete
+											{t("delete")}
 										</span>
 									</Table.Cell>
 								</Table.Row>

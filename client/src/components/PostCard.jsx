@@ -1,6 +1,9 @@
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 export default function PostCard({ post }) {
+	const { t } = useTranslation();
+
 	return (
 		<div className="group relative w-full border border-pink-500 hover:border-2 h-[400px] overflow-hidden rounded-lg sm:w-[430px] transition-all">
 			<Link to={`/post/${post.slug}`}>
