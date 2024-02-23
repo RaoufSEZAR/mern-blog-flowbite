@@ -1,13 +1,39 @@
 import { Button } from "flowbite-react";
+import { Link } from "react-router-dom";
 
 export default function CallToAction() {
+	const categories = [
+		"Nextjs",
+		"Angular",
+		"React",
+		"Nodejs",
+		"Javascript",
+		"Vue",
+	];
+
 	return (
 		<div className="flex flex-col sm:flex-row-reverse p-3 border border-pink-500 justify-center items-center rounded-tl-3xl rounded-br-3xl text-center">
 			<div className="flex-1 justify-center flex flex-col">
-				<h2 className="text-2xl">Want to learn more about JavaScript?</h2>
-				<p className="text-gray-500 my-2">
-					Checkout these resources with more than 40 JavaScript Projects
-				</p>
+				<div className="flex gap-3 flex-wrap my-5">
+					{categories.map((category) => (
+						<Link
+							key={category}
+							to={`/search?category=${category}`}
+							className="self-center"
+						>
+							<Button
+								color="gray"
+								outline
+								pill
+								className="border-none"
+								size="xl"
+								gradientDuoTone="purpleToPink"
+							>
+								#{category}
+							</Button>
+						</Link>
+					))}
+				</div>
 				<Button
 					gradientDuoTone="purpleToPink"
 					className="rounded-tl-xl rounded-bl-none"
