@@ -7,6 +7,8 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleTheme } from "../redux/theme/themeSlice";
 import { signoutSuccess } from "../redux/user/userSlice";
+import { useTranslation } from "react-i18next";
+import { MdOutlineLanguage } from "react-icons/md";
 
 const Header = () => {
 	const path = useLocation().pathname;
@@ -16,6 +18,11 @@ const Header = () => {
 	const { currentUser } = useSelector((state) => state.user);
 	const { theme } = useSelector((state) => state.theme);
 	const [searchTerm, setSearchTerm] = useState("");
+	const { t, i18n } = useTranslation();
+
+	const changeLanguage = (language) => {
+		i18n.changeLanguage(language);
+	};
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -66,6 +73,21 @@ const Header = () => {
 				<AiOutlineSearch />
 			</Button>
 			<div className="flex gap-2 md:order-2">
+				<div className="flex gap-1">
+					<Dropdown
+						arrowIcon={false}
+						inline
+						label={<MdOutlineLanguage color="purple" className="w-9 h-9" />}
+					>
+						<Dropdown.Item onClick={() => changeLanguage("en")}>
+							EN
+						</Dropdown.Item>
+						<Dropdown.Divider />
+						<Dropdown.Item onClick={() => changeLanguage("tr")}>
+							TR
+						</Dropdown.Item>
+					</Dropdown>
+				</div>
 				<Button
 					className="w-12 h-10 sm:inline hidden"
 					color="gray"
@@ -89,7 +111,7 @@ const Header = () => {
 							</span>
 						</Dropdown.Header>
 						<Link to={"/dashboard?tab=profile"}>
-							<Dropdown.Item>Profile</Dropdown.Item>
+							<Dropdown.Item>{t("profile")}</Dropdown.Item>
 						</Link>
 						<Dropdown.Divider />
 						<Dropdown.Item onClick={handleSignout}>Sign out</Dropdown.Item>

@@ -8,6 +8,7 @@ import {
 } from "react-icons/hi";
 import { Button, Table } from "flowbite-react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export default function DashboardComp() {
 	const [users, setUsers] = useState([]);
@@ -20,6 +21,7 @@ export default function DashboardComp() {
 	const [lastMonthPosts, setLastMonthPosts] = useState(0);
 	const [lastMonthComments, setLastMonthComments] = useState(0);
 	const { currentUser } = useSelector((state) => state.user);
+	const { t } = useTranslation();
 	useEffect(() => {
 		const fetchUsers = async () => {
 			try {
@@ -72,24 +74,26 @@ export default function DashboardComp() {
 				<div className="flex flex-col p-3 dark:bg-slate-800 gap-4 md:w-72 w-full rounded-md shadow-md">
 					<div className="flex justify-between">
 						<div className="">
-							<h3 className="text-gray-500 text-md uppercase">Total Users</h3>
+							<h3 className="text-gray-500 text-md uppercase">
+								{t("total-users")}
+							</h3>
 							<p className="text-2xl">{totalUsers}</p>
 						</div>
-						<HiOutlineUserGroup className="bg-teal-600  text-white rounded-full text-5xl p-3 shadow-lg" />
+						<HiOutlineUserGroup className="bg-purple-600  text-white rounded-full text-5xl p-3 shadow-lg" />
 					</div>
 					<div className="flex  gap-2 text-sm">
 						<span className="text-green-500 flex items-center">
 							<HiArrowNarrowUp />
 							{lastMonthUsers}
 						</span>
-						<div className="text-gray-500">Last month</div>
+						<div className="text-gray-500">{t("last-month")}</div>
 					</div>
 				</div>
 				<div className="flex flex-col p-3 dark:bg-slate-800 gap-4 md:w-72 w-full rounded-md shadow-md">
 					<div className="flex justify-between">
 						<div className="">
 							<h3 className="text-gray-500 text-md uppercase">
-								Total Comments
+								{t("total-comments")}
 							</h3>
 							<p className="text-2xl">{totalComments}</p>
 						</div>
@@ -100,7 +104,7 @@ export default function DashboardComp() {
 							<HiArrowNarrowUp />
 							{lastMonthComments}
 						</span>
-						<div className="text-gray-500">Last month</div>
+						<div className="text-gray-500">{t("last-month")}</div>
 					</div>
 				</div>
 				<div className="flex flex-col p-3 dark:bg-slate-800 gap-4 md:w-72 w-full rounded-md shadow-md">
@@ -116,7 +120,7 @@ export default function DashboardComp() {
 							<HiArrowNarrowUp />
 							{lastMonthPosts}
 						</span>
-						<div className="text-gray-500">Last month</div>
+						<div className="text-gray-500">{t("last-month")}</div>
 					</div>
 				</div>
 			</div>

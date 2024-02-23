@@ -12,7 +12,6 @@ export default function Search() {
 		category: "uncategorized",
 	});
 
-	console.log(sidebarData);
 	const [posts, setPosts] = useState([]);
 	const [loading, setLoading] = useState(false);
 	const [showMore, setShowMore] = useState(false);
@@ -161,7 +160,7 @@ export default function Search() {
 					{showMore && (
 						<button
 							onClick={handleShowMore}
-							className="text-teal-500 text-lg hover:underline p-7 w-full"
+							className="text-purple-500 text-lg hover:underline p-7 w-full"
 						>
 							Show More
 						</button>

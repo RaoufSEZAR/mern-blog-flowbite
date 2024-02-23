@@ -135,7 +135,9 @@ const DashPosts = () => {
 									</Table.Cell>
 									<Table.Cell>
 										<Link to={`/update-post/${post._id}`}>
-											<span className="text-teal-500 cursor-pointer">Edit</span>
+											<span className="text-purple-500 cursor-pointer">
+												Edit
+											</span>
 										</Link>
 									</Table.Cell>
 								</Table.Row>
@@ -145,7 +147,7 @@ const DashPosts = () => {
 					{showMorePosts && (
 						<button
 							onClick={handleShowMore}
-							className="w-full text-teal-500 self-center text-sm py-7"
+							className="w-full text-purple-500 self-center text-sm py-7"
 						>
 							Show More
 						</button>
