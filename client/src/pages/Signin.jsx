@@ -51,7 +51,7 @@ const Signin = () => {
 			<div className="flex p-3 mx-auto max-w-3xl flex-col md:flex-row md:items-center gap-5">
 				{/* left */}
 				<div className="flex-1">
-					<Link to="/" className=" font-bold dark:text-white text-4xl">
+					<Link to="/" className=" font-bold dark:text-white text-3xl">
 						<span className="px-2 py-1 bg-gradient-to-r text-pink-500 rounded-lg">
 							{t("home-title")}
 						</span>
