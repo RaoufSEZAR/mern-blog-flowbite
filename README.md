@@ -1,4 +1,48 @@
+# Blog_Flowbite_MERN-STACK
 
+ It's a blog project designed for CRUD operations on articles and comments and responsive for all screens, using **_ tailwind, ECMA6, React, Redux, Redux toolkit, Rest API, Firebase, OAuth, Node.js, Express.js ,Javascript, MongoDb and Mongoose._**
+
+## Project Feature:
+
+- Add articles and comments.
+- Find all articles by an article slug(post name).
+- Delete and update articles or comments.
+- Localizations: Added support for 2 languages (English and Turkish).
+- Login in and sign up using Google.
+- Dark mode and light mode.
+- Search functionality based on categories, titles, and tags.
+- User and Admin roles.
+  
+
+## To try this project in your machine
+
+after cloning the project add DB by adding .env file to api file and write this:
+
+```
+MONGO=mongodb://localhost:27017/YOUR_DATABASE_NAME
+JWT_SECRET=YOUR_JWT_SECRET
+```
+
+and inside api file in the same path write this in the terminal:
+
+```
+npm install
+npm run dev
+```
+
+and this message will show in terminal after connecting successfuly to db: \***\*connected to db sccessfully\*\***
+after that open client file and write this:
+
+```
+FIREBASE_API_KEY=YOUR_FIREBASE_KEY
+FIREBASE_APP_ID=YOUR_FIREBACE_APP_ID
+```
+and in the same path write this in the terminal:
+
+```
+npm install
+npm run dev
+```
 
 
 
