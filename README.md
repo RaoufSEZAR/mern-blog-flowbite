@@ -31,7 +31,7 @@ npm run dev
 ```
 
 and this message will show in terminal after connecting successfuly to db: \***\*connected to db sccessfully\*\***
-after that open client file and write this:
+after that open client file and adding .env file and write this:
 
 ```
 FIREBASE_API_KEY=YOUR_FIREBASE_KEY
