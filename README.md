@@ -2,11 +2,11 @@
 
  It's a blog project designed for CRUD operations on articles and comments and responsive for all screens, using **_ tailwind, ECMA6, React, Redux, Redux toolkit, Rest API, Firebase, OAuth, Node.js, Express.js ,Javascript, MongoDb and Mongoose._**
 
-## Project Feature:
+## Project Features:
 
 - Add articles and comments.
 - Find all articles by an article slug(post name).
-- Delete and update articles or comments.
+- Delete and update articles and comments.
 - Localizations: Added support for 2 languages (English and Turkish).
 - Login in and sign up using Google.
 - Dark mode and light mode.
